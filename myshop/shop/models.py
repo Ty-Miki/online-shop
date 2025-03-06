@@ -55,5 +55,5 @@ class Product(models.Model):
         super().save(*args, **kwargs)
         if self.image:
             img = Image.open(self.image.path)
-            img = img.resize((738, 738))  # Resize to 200x200
+            img = img.resize((738, 738))  # Resize to 738x738 pixels
             img.save(self.image.path)
