@@ -43,3 +43,9 @@
   - And one for product detail.
 
 *see urls.py in this app folder*
+
+#### Templates
+
+- Two templates are used to view product list and product detail, both extends from base.html
+
+*see the templates directory*

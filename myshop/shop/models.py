@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from PIL import Image
 
 class Category(models.Model):
 
@@ -49,3 +50,10 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image.path)
+            img = img.resize((738, 738))  # Resize to 200x200
+            img.save(self.image.path)
